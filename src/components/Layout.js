@@ -28,9 +28,9 @@ const buttonStyle = {
 const headerStyle = {
     marginBottom: "25px",
     marginTop: "10px",
-    fontSize: "25px",
+    fontSize: "20px",
     fontWeight: "bold",
-    textDecoration: "uppercase",
+    textTransform: "uppercase",
     color: "grey",
 };
 
@@ -42,6 +42,10 @@ const links = [
     {
         url: "/about",
         description: "About Us",
+    },
+    {
+        url: "/blog",
+        description: "Blog Post",
     },
 ];
 
