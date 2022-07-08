@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 const pageStyles = {
     display: "flex",
@@ -25,6 +25,15 @@ const buttonStyle = {
     alignItems: "center",
 };
 
+const headerStyle = {
+    marginBottom: "25px",
+    marginTop: "10px",
+    fontSize: "25px",
+    fontWeight: "bold",
+    textDecoration: "uppercase",
+    color: "grey",
+};
+
 const links = [
     {
         url: "/",
@@ -37,9 +46,22 @@ const links = [
 ];
 
 const Layout = ({ title, children, content }) => {
+    const data = useStaticQuery(graphql`
+        query {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+    `);
+
     return (
         <div style={pageStyles}>
-            <title>{title}</title>
+            <title>
+                {title} | {data.site.siteMetadata.title}
+            </title>
+            <header style={headerStyle}>{data.site.siteMetadata.title}</header>
             <nav>
                 {links.map((link) => (
                     <Link style={buttonStyle} to={link.url}>
